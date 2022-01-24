@@ -33,7 +33,7 @@ function [x, fval, xlog, iter] = simulatedannealing(f, x0, kmax, bounds, opts)
         y = x + a';                 
         
         % Boundaries represent whole domain of the function
-        while y < bounds(1) | y >= bounds(2)
+        while any(y < bounds(:,1)' | y >= bounds(:,2)')
             a = -d/2 + rand(length(x),1).*d;
             y = x + a';
         end

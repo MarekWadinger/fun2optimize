@@ -75,7 +75,7 @@ function [x, fval, xlog, iter] = gdmb(f, x0, kmax, bounds, opts)
         if opts.Plot
             subplot(121); plot(iter, x, 'b.'); title('x');
             drawnow limitrate; hold on
-            subplot(122); plot(iter, f(x), 'b.'); title('f(x)');
+            subplot(122); plot(iter, f(xnewcell{:}), 'b.'); title('f(x)');
             drawnow limitrate; hold on
         end
     
