@@ -10,10 +10,12 @@ function [x, f_val, t, i] = optMethodDemo(f, x0, kmax, bounds, ...
         opt_values (1,:) double {mustBeNumeric, mustBeReal} = 1:1:10
     end
 
-    x = zeros(length(opt_values),1);
-    f_val = zeros(length(opt_values),1);
-    t = zeros(length(opt_values),1);
-    i = zeros(length(opt_values),1);
+    nopts = nargin(f);
+
+    x = zeros(length(opt_values),nopts);
+    f_val = zeros(length(opt_values),nopts);
+    t = zeros(length(opt_values),nopts);
+    i = zeros(length(opt_values),nopts);
     
     opt_method_fcn = str2func(opt_method)
 
@@ -23,10 +25,10 @@ function [x, f_val, t, i] = optMethodDemo(f, x0, kmax, bounds, ...
                                    opt_param, opt_values(t_curr) , ...
                                    'Plot', false, ...
                                    'Printout', false);
-        x(t_curr) = xn;
-        f_val(t_curr) = -fval;
-        t(t_curr) = toc;
-        i(t_curr) = iter;
+        x(t_curr,:) = xn;
+        f_val(t_curr,:) = -fval;
+        t(t_curr,:) = toc;
+        i(t_curr,:) = iter;
     end
     
     clf(figure(3)); figure(3)
