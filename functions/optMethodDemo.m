@@ -4,7 +4,7 @@ function [x, f_val, t, i] = optMethodDemo(f, x0, kmax, bounds, ...
         f
         x0 double {mustBeNumeric, mustBeReal} = 0
         kmax (1,1) double {mustBeNumeric, mustBeReal} = 500
-        bounds (1,2) double {mustBeNumeric, mustBeReal} = [0, 10]
+        bounds (:,2) double {mustBeNumeric, mustBeReal} = [0, 10]
         opt_method string = 'gdm'
         opt_param string = 't'
         opt_values (1,:) double {mustBeNumeric, mustBeReal} = 1:1:10
