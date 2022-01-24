@@ -1,4 +1,4 @@
-function [x, xlog, iter] = luusjaakola(f, x0, kmax, bounds, opts)
+function [x, fval, xlog, iter] = luusjaakola(f, x0, kmax, bounds, opts)
 % Luus-Jaacola algorithm
     arguments
         f
@@ -69,4 +69,6 @@ function [x, xlog, iter] = luusjaakola(f, x0, kmax, bounds, opts)
             ' iterations... Time: ', num2str(toc), 's');
         disp(text)
     end
+
+    fval = f(xcell{:});
 end
