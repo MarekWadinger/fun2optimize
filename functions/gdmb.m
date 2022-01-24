@@ -65,6 +65,7 @@ function [x, xlog, iter] = gdmb(f, x0, kmax, bounds, opts)
         % Backtracking - update step size
         while f(xnewcell{:}) > f(xcell{:})+alpha*t*df(xcell{:})'*dx
             t = beta*t;
+            xnewcell = num2cell(x+t*dx');
         end
 
         % Update optimized variable
