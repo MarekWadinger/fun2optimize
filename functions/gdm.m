@@ -1,4 +1,4 @@
-function [x, xlog, iter] = gdm(f, x0, kmax, bounds, opts)
+function [x, fval, xlog, iter] = gdm(f, x0, kmax, bounds, opts)
     arguments
         f
         x0 double {mustBeNumeric, mustBeReal} = ''
@@ -72,10 +72,12 @@ function [x, xlog, iter] = gdm(f, x0, kmax, bounds, opts)
     end
     
     xlog = xlog(1:iter, :);
-
+    
     if opts.Printout
         text = strcat('Optimum reached in: ', num2str(iter), ...
             ' iterations... Time: ', num2str(toc), 's');
         disp(text)
     end
+
+    fval = f(xnewcell{:});
 end

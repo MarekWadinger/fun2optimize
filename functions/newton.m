@@ -1,4 +1,4 @@
-function [x, xlog, iter] = newton(f, x0, kmax, bounds, opts)
+function [x, fval, xlog, iter] = newton(f, x0, kmax, bounds, opts)
     arguments
         f
         x0 double {mustBeNumeric, mustBeReal} = ''
@@ -90,4 +90,6 @@ function [x, xlog, iter] = newton(f, x0, kmax, bounds, opts)
             ' iterations... Time: ', num2str(toc), 's');
         disp(text)
     end
+
+    fval = f(xnewcell{:});
 end
